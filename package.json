@@ -1,1 +1,25 @@
-{"scripts":{"check":"node scripts/check.mjs","build":"node scripts/build.mjs","start":"node server.js"},"dependencies":{"@vitejs/plugin-react":"latest","vite":"latest","react":"latest","react-dom":"latest","lucide-react":"latest"},"devDependencies":{}}
+{
+  "name": "qrv-marketing-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Public marketing website for the QR-V Global Verification Network at qrv.network.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node server.js",
+    "validate:prod": "npm run check && npm run build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20"
+  }
+}
