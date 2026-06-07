@@ -6,10 +6,10 @@ const VERIFY_BASE_URL = process.env.VERIFY_BASE_URL || 'https://verify.qrv.netwo
 const REGISTRY_BASE_URL = process.env.REGISTRY_BASE_URL || 'https://registry.qrv.network';
 const ISSUER_BASE_URL = process.env.ISSUER_BASE_URL || 'https://issuer.qrv.network';
 const API_BASE_URL = process.env.API_BASE_URL || 'https://api.qrv.network';
-const DOCS_BASE_URL = process.env.DOCS_BASE_URL || 'https://docs.qrv.network';
-const DEVELOPERS_BASE_URL = process.env.DEVELOPERS_BASE_URL || 'https://developers.qrv.network';
+const DOCS_BASE_URL = process.env.DOCS_BASE_URL || `${APP_BASE_URL}/docs`;
+const DEVELOPERS_BASE_URL = process.env.DEVELOPERS_BASE_URL || `${APP_BASE_URL}/docs/developers`;
 const STATUS_BASE_URL = process.env.STATUS_BASE_URL || 'https://status.qrv.network';
-const VERSION = process.env.APP_VERSION || '1.0.1';
+const VERSION = process.env.APP_VERSION || '1.1.0';
 
 const healthPayload = {
   status: 'ok',
@@ -18,6 +18,7 @@ const healthPayload = {
   network: 'QR-V Global Verification Network',
   protocol: 'QRVP-1',
   domain: 'qrv.network',
+  docs: DOCS_BASE_URL,
   endpoints: {
     verify: VERIFY_BASE_URL,
     issuer: ISSUER_BASE_URL,
@@ -29,8 +30,134 @@ const healthPayload = {
   }
 };
 
-function html() {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR-V™ Global Verification Network</title><meta name="description" content="QR-V is registry-based verification infrastructure for certificates, credentials, products, assets, documents, property records, and financial records."><style>:root{--bg:#050914;--panel:#101936;--line:#2c3f74;--gold:#f2d06b;--cyan:#55c7ff;--text:#edf3ff;--muted:#b7c5e6;--green:#22c55e;--red:#ef4444}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top,#173c78 0,#081124 48%,#03060e 100%);color:var(--text)}a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:28px 20px}.nav{display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{font-weight:900;letter-spacing:.08em}.nav a{color:#d9e5ff;text-decoration:none;margin-left:18px;font-size:14px}.hero{padding:76px 0 36px}.eyebrow{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.16em;font-size:13px}.tag{color:#9ed8ff;text-transform:uppercase;letter-spacing:.12em;font-weight:900}h1{font-size:clamp(42px,7vw,82px);line-height:.98;margin:12px 0;letter-spacing:-.055em}h2{font-size:clamp(28px,4vw,46px);margin:0 0 12px}h3{margin:0 0 8px}p,li{font-size:18px;line-height:1.65;color:var(--muted)}.caps{font-weight:900;color:#fff;letter-spacing:.08em}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-block;border-radius:999px;padding:14px 20px;text-decoration:none;font-weight:900;background:var(--gold);color:#081124}.btn.alt{background:transparent;color:#fff;border:1px solid var(--line)}.section{margin:42px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:rgba(16,25,54,.88);border:1px solid var(--line);border-radius:22px;padding:22px}.problem{border-left:4px solid var(--red)}.solution{border-left:4px solid var(--green)}.node{font-family:ui-monospace,Menlo,monospace;color:#dbeafe;word-break:break-word}.flow{font-family:ui-monospace,Menlo,monospace;background:#07112a;border:1px solid var(--line);border-radius:18px;padding:18px;color:#fff}.list{padding-left:20px}.status span{display:inline-block;margin:6px 6px 0 0;padding:7px 11px;border-radius:999px;border:1px solid var(--line);font-weight:900}.verify{margin-top:30px;background:rgba(16,25,54,.9);border:1px solid var(--line);border-radius:24px;padding:24px}.verify form{display:flex;gap:12px;flex-wrap:wrap}input{flex:1 1 280px;padding:16px;border-radius:14px;border:1px solid #3b4e83;background:#0b1430;color:#fff;font-size:16px}button{border:0;border-radius:999px;padding:15px 20px;background:var(--cyan);font-weight:900;color:#06101d;cursor:pointer}.footer{border-top:1px solid var(--line);margin-top:50px;padding:28px 0;color:#9fb2d8;font-size:14px}.footgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.footgrid a{display:block;color:#c9d7f4;text-decoration:none;margin:7px 0}.small{font-size:14px;color:#9fb2d8}.banner{background:linear-gradient(90deg,rgba(85,199,255,.12),rgba(242,208,107,.12));border:1px solid var(--line);border-radius:24px;padding:24px}.price{font-size:34px;color:#fff;font-weight:900}.ok{color:var(--green);font-weight:900}@media(max-width:850px){.grid,.grid4,.footgrid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.nav a{margin:0 12px 0 0}}</style></head><body><div class="wrap"><nav class="nav"><div class="brand">QR-V™</div><div><a href="${VERIFY_BASE_URL}">Verify</a><a href="${ISSUER_BASE_URL}">Issuer Portal</a><a href="#use-cases">Use Cases</a><a href="#pricing">Pricing</a><a href="${DOCS_BASE_URL}">Developers</a><a href="${STATUS_BASE_URL}">Status</a></div></nav><main class="hero"><div class="eyebrow">QR-V™ • Global Verification Network • QRVP-1 Protocol</div><h1>Verify Records. Confirm Authenticity. Instantly.</h1><p>QR-V™ transforms QR codes into registry-backed verification references. Each scan resolves to a verification record where authenticity, issuer identity, integrity, and status are confirmed in real time.</p><p class="caps">CERTIFICATES • CREDENTIALS • PRODUCTS • ASSETS • DOCUMENTS • PROPERTY TITLES • FINANCIAL RECORDS</p><div class="actions"><a class="btn" href="${VERIFY_BASE_URL}">Verify Record</a><a class="btn alt" href="${ISSUER_BASE_URL}">Issuer Portal</a><a class="btn alt" href="${DOCS_BASE_URL}">Developer Docs</a></div><section class="verify"><h2>Live QRVID Lookup</h2><p>Try a QR-V identifier or scan-ready verification reference.</p><form onsubmit="event.preventDefault();const v=document.getElementById('qrvid').value.trim();if(v) location.href='${VERIFY_BASE_URL}/'+encodeURIComponent(v);"><input id="qrvid" placeholder="QRV-CERT-000001" required><button>Verify QRVID</button></form><p class="small">Demo IDs: QRV-CERT-000001 • QRV-MEMBER-000001 • QRV-PROPERTY-000001</p></section></main><section class="grid section"><div class="card problem"><h2>The Problem</h2><p>Traditional QR codes were built for routing—not verification.</p><ul class="list"><li>No authenticity validation</li><li>No issuer confirmation</li><li>No integrity guarantees</li><li>No revocation awareness</li><li>No trusted record linkage</li></ul><p>This creates systemic risk across credentials, products, and digital records.</p></div><div class="card solution"><h2>The QR-V™ Solution</h2><p>QR-V™ introduces registry-based verification.</p><ul class="list"><li>Authenticity validation</li><li>Issuer-aware verification</li><li>Registry-backed records</li><li>Status + revocation control</li><li>Audit-ready traceability</li></ul><p><strong>QR-V™ is verification infrastructure—not a QR generator.</strong></p></div><div class="card"><h2>Why QR-V™ Exists</h2><div class="grid" style="grid-template-columns:1fr"><div><h3>DNS</h3><p>Resolves destinations</p></div><div><h3>HTTPS</h3><p>Secures transport</p></div><div><h3>QR-V™</h3><p>Verifies records</p></div></div></div></section><section class="section banner"><h2>How QR-V™ Works</h2><div class="grid4"><div class="card"><h3>1. Issue</h3><p>Issuer creates record</p></div><div class="card"><h3>2. Bind</h3><p>QR-V identifier linked</p></div><div class="card"><h3>3. Resolve</h3><p>Scan routes to network</p></div><div class="card"><h3>4. Verify</h3><p>Status result returned</p></div></div><p class="flow">Scan → Resolver → Registry Lookup → Validation → VERIFIED / REVOKED / EXPIRED / NOT FOUND</p></section><section id="use-cases" class="section"><div class="eyebrow">Use Cases</div><h2>Production verification use cases.</h2><div class="grid"><div class="card"><h3>Verified Certificates</h3><p>Diplomas, licenses, training records, compliance certificates, and professional credentials.</p></div><div class="card"><h3>Property Ownership QR</h3><p>Land title and property-record validation with one scan against a canonical registry reference.</p></div><div class="card"><h3>Product Authentication</h3><p>Anti-counterfeit labels, luxury goods, supplements, equipment, and warranty verification.</p></div><div class="card"><h3>Membership Credentials</h3><p>Member IDs, access credentials, association records, and institutional credentialing.</p></div><div class="card"><h3>Financial Records</h3><p>Issuer-controlled notes, bonds, certificates, investor documents, and registry-backed proofs.</p></div><div class="card"><h3>Document Validation</h3><p>Contracts, official records, notices, filings, and time-stamped registry anchors.</p></div></div></section><section class="grid section"><div class="card"><h2>Verification Response</h2><ul class="list"><li>Status</li><li>Issuer</li><li>Record type</li><li>Timestamp</li><li>Hash reference</li><li>Validation result</li></ul></div><div class="card"><h2>Example Result</h2><p class="flow">Status: VERIFIED<br>Issuer: Example Authority<br>Type: Certificate<br>QRVID: QRV-CERT-000001<br>Timestamp: 2026-03-19</p></div><div class="card"><h2>Network Services</h2><p class="status"><span>Verify</span><span>Registry</span><span>Issuer</span><span>API</span><span>Docs</span><span>Status</span></p></div></section><section id="pricing" class="section"><div class="eyebrow">Issuer Pricing</div><h2>Start issuing verifiable records.</h2><div class="grid"><div class="card"><h3>Starter Issuer</h3><div class="price">$49/mo</div><p>For small credential programs and early pilots.</p><ul class="list"><li>Up to 1,000 records</li><li>Public verification page</li><li>Basic issuer dashboard</li></ul><a class="btn" href="${ISSUER_BASE_URL}">Start Issuing</a></div><div class="card"><h3>Professional</h3><div class="price">$299/mo</div><p>For active organizations issuing credentials at scale.</p><ul class="list"><li>Up to 25,000 records</li><li>Revocation controls</li><li>Analytics and exports</li></ul><a class="btn" href="${ISSUER_BASE_URL}">Open Portal</a></div><div class="card"><h3>Enterprise</h3><div class="price">Custom</div><p>For high-volume issuers, brands, institutions, and private deployments.</p><ul class="list"><li>API access</li><li>White-label verification</li><li>Dedicated onboarding</li></ul><a class="btn" href="mailto:research@quantumohi.com">Contact Sales</a></div></div></section><section class="section card"><h2>Launch QR-V In Your Organization</h2><p>Use QR-V to verify certificates, membership IDs, products, property records, documents, and financial records.</p><div class="actions"><a class="btn" href="${ISSUER_BASE_URL}">Open Issuer Portal</a><a class="btn alt" href="${DEVELOPERS_BASE_URL}">Deploy QR-V™</a><a class="btn alt" href="${API_BASE_URL}">API + SDK</a></div><p class="small">Issuer Portal • WordPress Plugin • API + SDK</p></section><section class="section"><div class="eyebrow">QR-V™ System Architecture</div><h2>Layered verification network.</h2><p>QR-V operates as a layered verification network where each system component performs a defined role in the verification lifecycle. From record creation to verification response, every step is deterministic, registry-backed, and auditable.</p><div class="grid"><div class="card"><h3>Control Layer</h3><p class="node">issuer.qrv.network</p><p>Creates and manages verification records. Initiates registry entries and defines issuer-controlled data.</p></div><div class="card"><h3>Interface Layer</h3><p class="node">verify.qrv.network · explorer.qrv.network</p><p>User-facing interfaces for scanning, querying, and viewing verification results and registry records.</p></div><div class="card"><h3>Execution Layer</h3><p class="node">api.qrv.network</p><p>Processes verification requests, performs registry lookups, validates hashes, and returns structured responses.</p></div><div class="card"><h3>Data Layer</h3><p class="node">registry.qrv.network</p><p>Canonical datastore containing records, hashes, issuer data, and audit logs. Source of truth for all verification.</p></div><div class="card"><h3>Standards Layer</h3><p class="node">docs.qrv.network</p><p>Defines protocol rules, verification standards, registry models, and compliance structure.</p></div><div class="card"><h3>Integration Layer</h3><p class="node">developers.qrv.network</p><p>Provides APIs, SDKs, and integration tools for developers and enterprise systems.</p></div></div><p class="flow">Issuer → Registry → API → Verification Interface → Result</p></section><section class="section banner"><h2>Network Status</h2><p><span class="ok">Operational</span> — QR-V root service is online. Service health is available at <a href="/health">/health</a>, version metadata at <a href="/version">/version</a>, and public uptime at <a href="${STATUS_BASE_URL}">status.qrv.network</a>.</p></section><footer class="footer"><div class="footgrid"><div><h3>QR-V</h3><a href="${APP_BASE_URL}">What is QR-V™</a><a href="${DOCS_BASE_URL}">QRVP-1 Protocol</a><a href="${VERIFY_BASE_URL}">How QR-V Works</a><a href="${REGISTRY_BASE_URL}">Registry Portal</a></div><div><h3>Technology</h3><a href="${DOCS_BASE_URL}">Registry Architecture</a><a href="${API_BASE_URL}">Verification Network</a><a href="${DOCS_BASE_URL}">Hash Verification Model</a><a href="${DOCS_BASE_URL}">Timestamp Rules</a></div><div><h3>Resources</h3><a href="${DEVELOPERS_BASE_URL}">Developers</a><a href="${API_BASE_URL}">API Documentation</a><a href="${ISSUER_BASE_URL}">QR-V Issuer Plugin™</a><a href="${STATUS_BASE_URL}">Status</a></div><div><h3>Company</h3><a href="${APP_BASE_URL}">About QR-V</a><a href="mailto:research@quantumohi.com">Contact</a><a href="${APP_BASE_URL}">Press</a><a href="${APP_BASE_URL}">Legal</a></div></div><p>© 2026 QR-V™ — Global QR Verification Network — All Rights Reserved</p><p>Verification infrastructure and protocol architecture developed by One Gregory Onegodian™. Platform infrastructure provided by QuantumOHI.com.</p><p class="small">QRVP-1 • Registry-Based Verification Infrastructure • Version ${VERSION}</p></footer></div></body></html>`;
+const docsPages = {
+  '/docs': {
+    title: 'QR-V™ Documentation',
+    eyebrow: 'QR-V™ Docs • qrv.network/docs',
+    heading: 'QR-V™ Documentation Center',
+    summary: 'Authoritative documentation for the QR-V™ Global Verification Network, QRVP-1 protocol, registry model, issuer workflows, verification process, and developer integration paths.',
+    body: [
+      ['Overview', 'High-level explanation of QR-V™, the problem with traditional QR codes, system components, and the verification model.', '/docs/overview'],
+      ['Protocol', 'QRVP-1 identifier format, resolution process, verification flow, response structure, protocol lifecycle, and future extensions.', '/docs/protocol'],
+      ['Verification', 'End-user and system verification behavior, validation methods, status handling, revocation, audit logging, and UI model.', '/docs/verification'],
+      ['Registry', 'Authoritative data layer covering registry records, hashes, certificate records, issuer records, and audit logs.', '/docs/registry'],
+      ['Issuers', 'Issuer role, onboarding process, issuing records, revocation management, issuer validation, and best practices.', '/docs/issuers'],
+      ['Developers', 'Getting started, SDK overview, integration guides, verification integration, webhooks, environment setup, and sandbox.', '/docs/developers'],
+      ['API Reference', 'Authentication, create-record, verify-record, revoke-record, query-registry, issuer endpoints, and error codes.', '/docs/api-reference']
+    ]
+  },
+  '/docs/overview': {
+    title: 'QR-V™ Overview',
+    eyebrow: 'Docs • Overview',
+    heading: 'What is QR-V™?',
+    summary: 'QR-V™ is registry-based verification infrastructure that transforms QR codes into verifiable references anchored to canonical records.',
+    body: [
+      ['Problem With QR Codes', 'Standard QR codes usually redirect users to a URL without proving authenticity, issuer identity, or record integrity.', '#'],
+      ['Verification Model', 'QR-V™ changes the scan from a simple redirect into a deterministic verification request against a registry-backed record.', '#'],
+      ['Core Components', 'Identifier, resolver, API, registry, issuer, verifier, and response layer work together to return trusted verification results.', '#']
+    ]
+  },
+  '/docs/protocol': {
+    title: 'QRVP-1 Protocol',
+    eyebrow: 'Docs • Protocol',
+    heading: 'QRVP-1 Protocol',
+    summary: 'QRVP-1 defines how QR-based identifiers resolve into verifiable records through registry-backed verification infrastructure.',
+    body: [
+      ['Identifier Format', 'Primary format: QRV://registry/type/objectID. Gateway format: https://verify.qrv.network/{qrvid}.', '#'],
+      ['Resolution Process', 'The resolver interprets the identifier, selects the relevant verification pathway, and queries the registry/API layer.', '#'],
+      ['Verification Flow', 'Scan → identifier resolution → registry lookup → validation → structured verification result.', '#'],
+      ['Response Structure', 'Responses should include status, issuer, record type, timestamp, hash reference, and validation result.', '#']
+    ]
+  },
+  '/docs/verification': {
+    title: 'QR-V™ Verification',
+    eyebrow: 'Docs • Verification',
+    heading: 'Verification Process',
+    summary: 'QR-V™ verification returns deterministic results based on canonical registry data, not uncontrolled redirects.',
+    body: [
+      ['VERIFIED', 'The record exists, is active, matches validation requirements, and has not been revoked or expired.', '#'],
+      ['REVOKED', 'The issuer or registry has invalidated the record and the public result must show revoked status.', '#'],
+      ['EXPIRED', 'The record exists but the validity period has ended.', '#'],
+      ['NOT FOUND', 'No canonical registry record exists for the submitted identifier.', '#']
+    ]
+  },
+  '/docs/registry': {
+    title: 'QR-V™ Registry',
+    eyebrow: 'Docs • Registry',
+    heading: 'Registry Architecture',
+    summary: 'The registry is the authoritative data layer that stores QR-V records, hashes, issuer data, certificate records, revocation state, and audit logs.',
+    body: [
+      ['qr_objects', 'Canonical QR-V objects and record identifiers.', '#'],
+      ['qr_hash_registry', 'Hash references used for integrity validation.', '#'],
+      ['qr_certificates', 'Certificate-specific records and metadata.', '#'],
+      ['qr_issuers', 'Authorized issuer profiles, credentials, and status.', '#'],
+      ['qr_audit_log', 'Verification events and record lifecycle audit entries.', '#']
+    ]
+  },
+  '/docs/issuers': {
+    title: 'QR-V™ Issuers',
+    eyebrow: 'Docs • Issuers',
+    heading: 'Issuer Operations',
+    summary: 'Issuers create, manage, update, and revoke QR-V records through the issuer portal and registry API.',
+    body: [
+      ['Issuer Role', 'An issuer is an authorized organization or entity that creates registry-backed verification records.', '#'],
+      ['Issuing Records', 'Issuer submits record data, system generates QRVID, record is stored, and verification URL is produced.', '#'],
+      ['Revocation Management', 'Issuer can invalidate records when credentials, IDs, certificates, products, or documents should no longer verify as active.', '#'],
+      ['Best Practices', 'Use stable IDs, clear issuer metadata, legal Gregorian timestamps, optional supplementary OneGodian Time references, and auditable lifecycle logs.', '#']
+    ]
+  },
+  '/docs/developers': {
+    title: 'QR-V™ Developers',
+    eyebrow: 'Docs • Developers',
+    heading: 'Developer Integration',
+    summary: 'Developer documentation for integrating QR-V™ verification into applications, portals, scanners, enterprise systems, and issuer workflows.',
+    body: [
+      ['Getting Started', 'Use the verification endpoint to resolve QRVIDs and return structured results.', '#'],
+      ['SDK Overview', 'SDKs should wrap record creation, verification lookup, revocation, error handling, and webhook events.', '#'],
+      ['Integration Guides', 'Common integrations include certificate platforms, identity systems, product authentication, WordPress, mobile scanners, and enterprise dashboards.', '#'],
+      ['Testing Sandbox', 'Use demo IDs and staging keys before creating production verification records.', '#']
+    ]
+  },
+  '/docs/api-reference': {
+    title: 'QR-V™ API Reference',
+    eyebrow: 'Docs • API Reference',
+    heading: 'API Reference',
+    summary: 'Core API contract for creating, verifying, revoking, and querying QR-V registry-backed records.',
+    body: [
+      ['POST /registry/create', 'Create a registry-backed QR-V record and return a QRVID plus verification URL.', '#'],
+      ['GET /verify/:qrvid', 'Resolve and verify a QRVID. Returns VERIFIED, REVOKED, EXPIRED, or NOT_FOUND.', '#'],
+      ['POST /revoke', 'Revoke an existing record and record the revocation event in the audit log.', '#'],
+      ['GET /record/:qrvid', 'Return canonical registry record metadata where permissions allow.', '#'],
+      ['Error Codes', 'Use 200 for verified lookups, 404 for not found, 410 for revoked, 422 for invalid identifiers, and 500 for registry errors.', '#']
+    ]
+  }
+};
+
+function styles() {
+  return `:root{--bg:#050914;--panel:#101936;--line:#2c3f74;--gold:#f2d06b;--cyan:#55c7ff;--text:#edf3ff;--muted:#b7c5e6;--green:#22c55e;--red:#ef4444}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top,#173c78 0,#081124 48%,#03060e 100%);color:var(--text)}a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:28px 20px}.nav{display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{font-weight:900;letter-spacing:.08em}.nav a{color:#d9e5ff;text-decoration:none;margin-left:18px;font-size:14px}.hero{padding:76px 0 36px}.eyebrow{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.16em;font-size:13px}h1{font-size:clamp(42px,7vw,82px);line-height:.98;margin:12px 0;letter-spacing:-.055em}h2{font-size:clamp(28px,4vw,46px);margin:0 0 12px}h3{margin:0 0 8px}p,li{font-size:18px;line-height:1.65;color:var(--muted)}.caps{font-weight:900;color:#fff;letter-spacing:.08em}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-block;border-radius:999px;padding:14px 20px;text-decoration:none;font-weight:900;background:var(--gold);color:#081124}.btn.alt{background:transparent;color:#fff;border:1px solid var(--line)}.section{margin:42px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:rgba(16,25,54,.88);border:1px solid var(--line);border-radius:22px;padding:22px}.problem{border-left:4px solid var(--red)}.solution{border-left:4px solid var(--green)}.node{font-family:ui-monospace,Menlo,monospace;color:#dbeafe;word-break:break-word}.flow{font-family:ui-monospace,Menlo,monospace;background:#07112a;border:1px solid var(--line);border-radius:18px;padding:18px;color:#fff}.list{padding-left:20px}.status span{display:inline-block;margin:6px 6px 0 0;padding:7px 11px;border-radius:999px;border:1px solid var(--line);font-weight:900}.verify{margin-top:30px;background:rgba(16,25,54,.9);border:1px solid var(--line);border-radius:24px;padding:24px}.verify form{display:flex;gap:12px;flex-wrap:wrap}input{flex:1 1 280px;padding:16px;border-radius:14px;border:1px solid #3b4e83;background:#0b1430;color:#fff;font-size:16px}button{border:0;border-radius:999px;padding:15px 20px;background:var(--cyan);font-weight:900;color:#06101d;cursor:pointer}.footer{border-top:1px solid var(--line);margin-top:50px;padding:28px 0;color:#9fb2d8;font-size:14px}.footgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.footgrid a{display:block;color:#c9d7f4;text-decoration:none;margin:7px 0}.small{font-size:14px;color:#9fb2d8}.banner{background:linear-gradient(90deg,rgba(85,199,255,.12),rgba(242,208,107,.12));border:1px solid var(--line);border-radius:24px;padding:24px}.price{font-size:34px;color:#fff;font-weight:900}.ok{color:var(--green);font-weight:900}.docnav{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.docnav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:#dbeafe;background:rgba(16,25,54,.65)}@media(max-width:850px){.grid,.grid4,.footgrid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.nav a{margin:0 12px 0 0}}`;
+}
+
+function shell(title, description, body) {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><meta name="description" content="${description}"><style>${styles()}</style></head><body><div class="wrap"><nav class="nav"><div class="brand"><a href="${APP_BASE_URL}" style="text-decoration:none">QR-V™</a></div><div><a href="${APP_BASE_URL}/about">About</a><a href="${APP_BASE_URL}/docs">Docs</a><a href="${VERIFY_BASE_URL}">Verify</a><a href="${ISSUER_BASE_URL}">Issuer Portal</a><a href="${STATUS_BASE_URL}">Status</a></div></nav>${body}${footer()}</div></body></html>`;
+}
+
+function footer() {
+  return `<footer class="footer"><div class="footgrid"><div><h3>QR-V</h3><a href="${APP_BASE_URL}/about">About QR-V™</a><a href="${APP_BASE_URL}/docs/protocol">QRVP-1 Protocol</a><a href="${VERIFY_BASE_URL}">Verify a Record</a><a href="${REGISTRY_BASE_URL}">Registry Portal</a></div><div><h3>Technology</h3><a href="${APP_BASE_URL}/docs/registry">Registry Architecture</a><a href="${APP_BASE_URL}/docs/api-reference">Verification API</a><a href="${APP_BASE_URL}/docs/verification">Verification Model</a><a href="${APP_BASE_URL}/docs">Documentation</a></div><div><h3>Resources</h3><a href="${APP_BASE_URL}/docs/developers">Developers</a><a href="${ISSUER_BASE_URL}">Issuer Portal</a><a href="${STATUS_BASE_URL}">Status</a><a href="mailto:research@quantumohi.com">Contact</a></div><div><h3>Company</h3><a href="${APP_BASE_URL}/about">About</a><a href="mailto:research@quantumohi.com">Enterprise Access</a><a href="${APP_BASE_URL}/docs">Legal / Compliance</a><a href="${APP_BASE_URL}/docs/verification">Security Disclosure</a></div></div><p>© 2026 QR-V™ — Global QR Verification Network — All Rights Reserved</p><p>Verification infrastructure and protocol architecture developed by One Gregory Onegodian™. Platform infrastructure provided by QuantumOHI.com.</p><p class="small">QRVP-1 • Registry-Based Verification Infrastructure • Version ${VERSION}</p></footer>`;
+}
+
+function homeHtml() {
+  return shell('QR-V™ Global Verification Network', 'QR-V is registry-based verification infrastructure for certificates, credentials, products, assets, documents, property records, and financial records.', `<main class="hero"><div class="eyebrow">QR-V™ • Global Verification Network • QRVP-1 Protocol</div><h1>Verify Records. Confirm Authenticity. Instantly.</h1><p>QR-V™ transforms QR codes into registry-backed verification references. Each scan resolves to a verification record where authenticity, issuer identity, integrity, and status are confirmed in real time.</p><p class="caps">CERTIFICATES • CREDENTIALS • PRODUCTS • ASSETS • DOCUMENTS • PROPERTY TITLES • FINANCIAL RECORDS</p><div class="actions"><a class="btn" href="${VERIFY_BASE_URL}">Verify Record</a><a class="btn alt" href="${ISSUER_BASE_URL}">Issuer Portal</a><a class="btn alt" href="${APP_BASE_URL}/docs">Documentation</a></div><section class="verify"><h2>Live QRVID Lookup</h2><p>Try a QR-V identifier or scan-ready verification reference.</p><form onsubmit="event.preventDefault();const v=document.getElementById('qrvid').value.trim();if(v) location.href='${VERIFY_BASE_URL}/'+encodeURIComponent(v);"><input id="qrvid" placeholder="QRV-CERT-000001" required><button>Verify QRVID</button></form><p class="small">Demo IDs: QRV-CERT-000001 • QRV-MEMBER-000001 • QRV-PROPERTY-000001</p></section></main><section class="grid section"><div class="card problem"><h2>The Problem</h2><p>Traditional QR codes were built for routing—not verification.</p><ul class="list"><li>No authenticity validation</li><li>No issuer confirmation</li><li>No integrity guarantees</li><li>No revocation awareness</li><li>No trusted record linkage</li></ul></div><div class="card solution"><h2>The QR-V™ Solution</h2><p>QR-V™ introduces registry-based verification.</p><ul class="list"><li>Authenticity validation</li><li>Issuer-aware verification</li><li>Registry-backed records</li><li>Status + revocation control</li><li>Audit-ready traceability</li></ul></div><div class="card"><h2>Why QR-V™ Exists</h2><p>DNS resolves destinations. HTTPS secures transport. QR-V™ verifies records.</p></div></section><section class="section banner"><h2>How QR-V™ Works</h2><div class="grid4"><div class="card"><h3>1. Issue</h3><p>Issuer creates record</p></div><div class="card"><h3>2. Bind</h3><p>QR-V identifier linked</p></div><div class="card"><h3>3. Resolve</h3><p>Scan routes to network</p></div><div class="card"><h3>4. Verify</h3><p>Status result returned</p></div></div><p class="flow">Scan → Resolver → Registry Lookup → Validation → VERIFIED / REVOKED / EXPIRED / NOT FOUND</p></section><section class="section card"><h2>Production Documentation Now Lives at qrv.network/docs</h2><p>The canonical documentation path is now inside the root domain. Use the docs center for protocol, registry, verification, issuer, developer, and API reference material.</p><div class="actions"><a class="btn" href="${APP_BASE_URL}/docs">Open Docs</a><a class="btn alt" href="${APP_BASE_URL}/docs/api-reference">API Reference</a><a class="btn alt" href="${APP_BASE_URL}/docs/developers">Developer Guide</a></div></section>`);
+}
+
+function aboutHtml() {
+  return shell('About QR-V™ | Global QR Verification Network', 'QR-V™ is a registry-based verification infrastructure that transforms QR codes into verifiable references through the QRVP-1 protocol.', `<main class="hero"><div class="eyebrow">About QR-V™ • Global Verification Network</div><h1>A Verification Layer for QR-Based Systems</h1><p>QR-V™ is a registry-based verification infrastructure that transforms QR codes into verifiable references.</p><p>Each QR-V identifier resolves to a canonical registry record, enabling independent validation of authenticity, issuer identity, record integrity, and current status.</p><div class="actions"><a class="btn" href="${VERIFY_BASE_URL}">Verify a Record</a><a class="btn alt" href="${APP_BASE_URL}/docs">Developer Docs</a><a class="btn alt" href="mailto:research@quantumohi.com">Enterprise Access</a></div></main><section class="section banner"><h2>Verification Flow</h2><p class="flow">QR Scan → Identifier Resolution → Registry Lookup → Validation → Result</p><p>Verification results are derived from authoritative registry records, not from user-controlled endpoints.</p></section><section class="grid section"><div class="card"><h3>Identifier</h3><p>QR-V reference embedded in the QR code.</p></div><div class="card"><h3>Resolver</h3><p>Routes the verification request.</p></div><div class="card"><h3>API</h3><p>Processes verification logic.</p></div><div class="card"><h3>Registry</h3><p>Stores canonical records.</p></div><div class="card"><h3>Result</h3><p>Verification response.</p></div><div class="card"><h3>Audit</h3><p>Traceability for events and lifecycle actions.</p></div></section>`);
+}
+
+function docsHtml(page) {
+  const doc = docsPages[page] || docsPages['/docs'];
+  const nav = Object.keys(docsPages).map((p) => `<a href="${p}">${p === '/docs' ? 'Docs Home' : p.replace('/docs/', '').replace('-', ' ')}</a>`).join('');
+  const cards = doc.body.map(([title, text, href]) => `<div class="card"><h3>${title}</h3><p>${text}</p>${href && href !== '#' ? `<a class="btn alt" href="${href}">Open</a>` : ''}</div>`).join('');
+  return shell(`${doc.title} | QR-V™ Docs`, doc.summary, `<main class="hero"><div class="eyebrow">${doc.eyebrow}</div><h1>${doc.heading}</h1><p>${doc.summary}</p><div class="docnav">${nav}</div></main><section class="grid section">${cards}</section><section class="section banner"><h2>Canonical Documentation Path</h2><p><strong>qrv.network/docs</strong> is now the primary documentation home for QR-V™. Runtime services remain on dedicated operational subdomains: verify, registry, issuer, api, and status.</p></section>`);
 }
 
 function sendJson(res, payload) {
@@ -39,17 +166,27 @@ function sendJson(res, payload) {
 }
 
 const server = http.createServer((req, res) => {
-  const path = new URL(req.url || '/', APP_BASE_URL).pathname;
+  const path = new URL(req.url || '/', APP_BASE_URL).pathname.replace(/\/$/, '') || '/';
   if (path === '/health' || path === '/healthz' || path === '/health.json') {
     sendJson(res, healthPayload);
     return;
   }
   if (path === '/version') {
-    sendJson(res, { service: 'qrv-network-root', version: VERSION, appBaseUrl: APP_BASE_URL, protocol: 'QRVP-1' });
+    sendJson(res, { service: 'qrv-network-root', version: VERSION, appBaseUrl: APP_BASE_URL, protocol: 'QRVP-1', docs: DOCS_BASE_URL });
+    return;
+  }
+  if (path === '/about') {
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end(aboutHtml());
+    return;
+  }
+  if (path === '/docs' || path.startsWith('/docs/')) {
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end(docsHtml(path));
     return;
   }
   res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-  res.end(html());
+  res.end(homeHtml());
 });
 
 server.listen(PORT, '0.0.0.0', () => console.log(`QR-V root running on ${PORT}`));
