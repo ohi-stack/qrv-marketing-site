@@ -1,6 +1,6 @@
 # QR-V™ Global Verification Network
 
-Public marketing website for `qrv.network`.
+Public marketing website and navigation hub for `qrv.network`.
 
 QR-V™ is a registry-backed verification network that transforms ordinary QR codes into verifiable references for records, credentials, products, documents, assets, and financial instruments.
 
@@ -9,6 +9,35 @@ QR-V™ is a registry-backed verification network that transforms ordinary QR co
 **Verify records. Confirm authenticity. Instantly.**
 
 QR-V™ creates a public trust layer for QR-based systems. Instead of sending a scanner to an arbitrary URL, a QR-V™ code resolves to a canonical registry record where authenticity, issuer identity, integrity, status, and revocation state can be checked.
+
+## Upgraded Public Navigation
+
+The public QRV root now supports a cleaner production navigation structure:
+
+### Main Navigation
+
+- QR-V Protocol — `/protocol`
+- How It Works — `/how-it-works`
+- Registry — `/registry`
+- Use Cases — `/use-cases`
+- Developers — `/developers`
+- About — `/about`
+
+### Utility Navigation
+
+- Verify — `https://verify.qrv.network`
+- Issuer Portal — `https://issuer.qrv.network`
+- Store — `https://store.qrv.network`
+- Status — `/status`
+
+### Footer Structure
+
+The footer uses four columns:
+
+1. QR-V
+2. Technology
+3. Resources
+4. Company
 
 ## Primary Audience
 
@@ -21,8 +50,9 @@ QR-V™ creates a public trust layer for QR-based systems. Instead of sending a 
 
 - **Verify Record:** `https://verify.qrv.network`
 - **Issuer Portal:** `https://issuer.qrv.network`
-- **Developer Docs:** `https://developers.qrv.network`
-- **Status:** `https://status.qrv.network`
+- **Developer Docs:** `https://qrv.network/docs/developers`
+- **Status:** `https://qrv.network/status`
+- **Store:** `https://store.qrv.network`
 
 ## Homepage Content Structure
 
@@ -41,7 +71,7 @@ QR-V™ creates a public trust layer for QR-based systems. Instead of sending a 
 Expected health response:
 
 ```json
-{"status":"ok","service":"qrv-network-root","version":"1.0.0"}
+{"status":"ok","service":"qrv-network-root","version":"1.3.0"}
 ```
 
 ## Required Links
@@ -51,19 +81,23 @@ Expected health response:
 - `https://issuer.qrv.network`
 - `https://registry.qrv.network`
 - `https://api.qrv.network`
-- `https://developers.qrv.network`
-- `https://docs.qrv.network`
-- `https://status.qrv.network`
+- `https://qrv.network/developers`
+- `https://qrv.network/docs`
+- `https://qrv.network/status`
+- `https://store.qrv.network`
 
 ## Production Readiness Checklist
 
-- [ ] Root page renders without raw JSON except health endpoints.
-- [ ] Mobile navigation is readable.
-- [ ] Verify form redirects to `verify.qrv.network/{QRVID}`.
-- [ ] Pricing, use case, issuer, and developer CTAs exist.
-- [ ] Footer links point to live QR-V network domains.
-- [ ] Health endpoint returns valid JSON.
-- [ ] No test language appears on the public homepage.
+- [x] Root page renders without raw JSON except health endpoints.
+- [x] Mobile navigation is readable.
+- [x] Verify form redirects to `verify.qrv.network/{QRVID}`.
+- [x] Main navigation routes exist.
+- [x] Footer uses four operational columns.
+- [x] Health endpoint returns valid JSON.
+- [x] Check and build scripts exist.
+- [ ] Verify portal deployment is corrected.
+- [ ] Issuer portal stale placeholder is replaced.
+- [ ] First public QRVID certificate lifecycle is verified end-to-end.
 
 ## Commands
 
