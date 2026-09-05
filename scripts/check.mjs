@@ -20,9 +20,7 @@ const requiredFiles = [
 ];
 
 for (const file of requiredFiles) {
-  if (!existsSync(file)) {
-    throw new Error(`Missing required file: ${file}`);
-  }
+  if (!existsSync(file)) throw new Error(`Missing required file: ${file}`);
 }
 
 execFileSync(process.execPath, ['--check', 'server.js'], { stdio: 'inherit' });
@@ -38,17 +36,29 @@ const checks = [
   ['src/App.jsx', 'Global Verification Network'],
   ['src/App.jsx', 'registry-based verification'],
   ['src/App.jsx', 'Verify Demo Record'],
-  ['src/config.js', 'verify.qrv.network'],
-  ['src/config.js', 'issuer.qrv.network'],
-  ['src/config.js', 'registry.qrv.network'],
+  ['src/config.js', 'https://qrv.network/verify'],
+  ['src/config.js', 'https://qrv.network/issuer'],
+  ['src/config.js', 'https://qrv.network/registry'],
+  ['src/config.js', 'https://api.qrv.network/api/v1'],
   ['public/sitemap.xml', 'https://qrv.network/status']
 ];
 
 for (const [file, snippet] of checks) {
   const content = readFileSync(file, 'utf8');
-  if (!content.includes(snippet)) {
-    throw new Error(`${file} is missing required snippet: ${snippet}`);
+  if (!content.includes(snippet)) throw new Error(`${file} is missing required snippet: ${snippet}`);
+}
+
+const config = readFileSync('src/config.js', 'utf8');
+for (const legacyOrigin of [
+  'https://verify.qrv.network',
+  'https://issuer.qrv.network',
+  'https://registry.qrv.network',
+  'https://docs.qrv.network',
+  'https://developers.qrv.network'
+]) {
+  if (config.includes(legacyOrigin)) {
+    throw new Error(`src/config.js still uses legacy canonical origin: ${legacyOrigin}`);
   }
 }
 
-console.log('QR-V marketing site production readiness check passed.');
+console.log('QR-V marketing source two-node readiness check passed.');
