@@ -1,39 +1,42 @@
-# QRV.network Environment
+# QRV.network Public Content Environment
 
-The `qrv-marketing-site` repository operates the public root node for `qrv.network`.
+`qrv-marketing-site` is a design/content source repository. The canonical production runtime for `qrv.network` is `ohi-stack/qrv-node`; the canonical backend is `ohi-stack/qrv-api`.
 
-## Required runtime variables
+## Public URL contract
 
 ```env
-NODE_ENV=production
-PORT=3000
 APP_BASE_URL=https://qrv.network
-QRV_VERIFY_BASE_URL=https://verify.qrv.network
-QRV_ISSUER_BASE_URL=https://issuer.qrv.network
-QRV_API_BASE_URL=https://api.qrv.network
-QRV_REGISTRY_BASE_URL=https://registry.qrv.network
-QRV_DOCS_BASE_URL=https://docs.qrv.network
-QRV_DEVELOPERS_BASE_URL=https://developers.qrv.network
-QRV_STATUS_BASE_URL=https://qrv.network/status
-QRV_DEMO_QRVID=QRV-PROD-CERT-000001
+VERIFY_BASE_URL=https://qrv.network/verify
+ISSUER_BASE_URL=https://qrv.network/issuer
+REGISTRY_BASE_URL=https://qrv.network/registry
+DOCS_BASE_URL=https://qrv.network/docs
+DEVELOPERS_BASE_URL=https://qrv.network/developers
+STATUS_BASE_URL=https://qrv.network/status
+API_BASE_URL=https://api.qrv.network/api/v1
 ```
 
 ## Frontend variables
 
-The React/Vite layer uses `VITE_*` names when browser-side configuration is required.
+Only public values may be exposed through Vite:
 
 ```env
 VITE_APP_BASE_URL=https://qrv.network
-VITE_QRV_VERIFY_BASE_URL=https://verify.qrv.network
-VITE_QRV_ISSUER_BASE_URL=https://issuer.qrv.network
-VITE_QRV_API_BASE_URL=https://api.qrv.network
-VITE_QRV_REGISTRY_BASE_URL=https://registry.qrv.network
-VITE_QRV_DOCS_BASE_URL=https://docs.qrv.network
-VITE_QRV_DEVELOPERS_BASE_URL=https://developers.qrv.network
+VITE_QRV_VERIFY_BASE_URL=https://qrv.network/verify
+VITE_QRV_ISSUER_BASE_URL=https://qrv.network/issuer
+VITE_QRV_API_BASE_URL=https://api.qrv.network/api/v1
+VITE_QRV_REGISTRY_BASE_URL=https://qrv.network/registry
+VITE_QRV_DOCS_BASE_URL=https://qrv.network/docs
+VITE_QRV_DEVELOPERS_BASE_URL=https://qrv.network/developers
 VITE_QRV_STATUS_BASE_URL=https://qrv.network/status
 VITE_QRV_DEMO_QRVID=QRV-PROD-CERT-000001
 ```
 
 ## Security rule
 
-Do not place database credentials, JWT secrets, issuer API keys, signing keys, or admin tokens in this marketing site repository. Those belong only in backend service environments.
+Never place database credentials, Supabase secret/server keys, JWT signing secrets, unrestricted QR-V API keys, webhook secrets, Ed25519 private keys, or payment-provider secrets in this repository or browser bundle.
+
+Privileged configuration belongs only to `api.qrv.network` / `ohi-stack/qrv-api`. Server-session configuration for the human-facing platform belongs only to `qrv.network` / `ohi-stack/qrv-node`.
+
+## Legacy domains
+
+Historical service hostnames may remain as HTTP 308 compatibility aliases, but they must not be used as canonical defaults in new content or environment configuration.
