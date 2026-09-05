@@ -18,6 +18,24 @@ The production system uses exactly two runtime boundaries:
 
 This repository supplies public-site assets and content to the platform node. It must not define a competing public deployment.
 
+## Runtime guard
+
+`npm start` is intentionally blocked by default so this repository cannot accidentally become a second `qrv.network` production origin.
+
+For source preview use:
+
+```bash
+npm run dev
+```
+
+For an explicit non-production preview through the start wrapper:
+
+```bash
+QRV_ALLOW_SOURCE_PREVIEW=1 npm start
+```
+
+Do not set `QRV_ALLOW_SOURCE_PREVIEW=1` on the production `qrv.network` Hostinger application.
+
 ## Canonical public routes
 
 ```text
