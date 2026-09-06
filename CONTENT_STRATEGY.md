@@ -3,14 +3,16 @@
 ## Platform Position
 QR-V™ is registry-backed verification infrastructure that turns QR codes into verifiable references. A QR-V scan should resolve through a controlled verification process, not an arbitrary destination.
 
-## Public Site Source of Truth
-The public QR-V website source is maintained in:
+## Canonical Public Site Source of Truth
+The production QR-V public website source and runtime are now maintained in:
 
 ```text
-ohi-stack/qrv-marketing-site
+ohi-stack/qrv-node
 ```
 
-The ChatGPT Sites project `qrv-global-verification` is a design/content source that should be exported or synchronized into this repository so the QR-V public site is not split across competing codebases.
+This repository, `ohi-stack/qrv-marketing-site`, is retained as a migration/source-history repository for the original React/Vite visual system, public content, SEO assets, commercialization materials, and ChatGPT Sites provenance. It must not define a competing production deployment.
+
+The ChatGPT Sites project `qrv-global-verification` remains a design/content provenance source. New production public-site changes should converge into `qrv-node`.
 
 ## Core Message
 Turn every scan into verifiable proof.
@@ -25,13 +27,13 @@ Supporting promise:
 qrv.network
 ```
 
-Public routes should live under the root platform whenever practical:
+Canonical routes include:
 
 - `/protocol`
 - `/how-it-works`
-- `/verification`
+- `/verify`
 - `/registry`
-- `/issuers`
+- `/issuer`
 - `/use-cases`
 - `/pricing`
 - `/developers`
@@ -40,7 +42,7 @@ Public routes should live under the root platform whenever practical:
 - `/store`
 - `/network`
 - `/about`
-- `/support`
+- `/contact`
 
 The machine/API boundary remains:
 
@@ -48,26 +50,7 @@ The machine/API boundary remains:
 api.qrv.network
 ```
 
-Legacy subdomains may be retained only as compatibility aliases or controlled redirects where needed.
-
-## Primary Pages
-1. Home
-2. QR-V Protocol
-3. How It Works
-4. Verification
-5. Registry
-6. Issuers
-7. Use Cases
-8. Pricing
-9. Developers
-10. Documentation
-11. Status
-12. Store
-13. Network
-14. About
-15. Support / Contact
-16. Privacy
-17. Terms
+Legacy subdomains may be retained only as compatibility aliases or controlled redirects.
 
 ## Live Demo Record
 
@@ -82,7 +65,7 @@ QRV-PROD-CERT-000001
 - Membership verification
 - Document verification
 - Financial records
-- Property and title references
+- Property and asset references
 - Event access
 - Supply chain traceability
 - Asset registration
@@ -96,20 +79,17 @@ QRV-PROD-CERT-000001
 - Explore QR-V Network
 
 ## Visual / UX Direction
-The public site should preserve the current QR-V Sites direction:
+The public site should preserve the QR-V Sites direction:
 
 - modern QR-V logo treatment
-- responsive header and mega menu
-- separate light/dark logo variants where needed
-- animated QR-V network representation in hero sections
+- responsive header and mega-menu-ready information architecture
 - verification-focused hero copy
+- QR-V network visual representation
 - enterprise-grade spacing and typography
 - shared desktop/mobile source
-- mobile navigation designed intentionally rather than a wrapped desktop menu
+- intentional mobile navigation
 
 ## Commercial Priority
-Public pages should lead users toward the revenue-producing QR-V workflows in this order:
-
 1. Verified Certificates
 2. Issuer Portal
 3. Membership Verification
