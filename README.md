@@ -1,40 +1,97 @@
 # QR-V™ Marketing / Public Content Source
 
-`ohi-stack/qrv-marketing-site` is the canonical design, content, SEO, and Sites-sync source for the public QR-V™ experience.
+`ohi-stack/qrv-marketing-site` is now a **migration/reference source** for the QR-V™ public visual system, content, SEO assets, and Sites-origin material.
 
-It is **not** a separate production runtime in QR-V Production Architecture v1.0.
+It is **not** the canonical production runtime for `qrv.network`.
 
-## Canonical runtime ownership
+## Canonical production ownership
 
 ```text
 qrv.network       → ohi-stack/qrv-node
 api.qrv.network   → ohi-stack/qrv-api
 ```
 
-The production system uses exactly two runtime boundaries:
+The active consolidation work is tracked in:
 
-1. `qrv.network` — all human-facing routes, verification UX, issuer workspace, registry/explorer UI, docs, developers, pricing, status, store, and authenticated platform sessions.
-2. `api.qrv.network` — all privileged API operations, PostgreSQL persistence, verification logic, lifecycle mutation, issuer authorization, audit logging, rate limiting, cryptographic operations, and server-side secrets.
+```text
+ohi-stack/qrv-node
+PR #18 — Consolidate QR-V Sites visual system and customer frontend into qrv-node
+```
 
-This repository supplies public-site assets and content to the platform node. It must not define a competing public deployment.
+The purpose of this repository during migration is to preserve source fidelity while the customer-facing frontend is absorbed into `qrv-node`.
+
+## What remains authoritative here during migration
+
+This repository remains the reference source for material that must be compared against the consolidated platform until parity is proven:
+
+- React/Vite customer-facing frontend source;
+- QR-V visual design system;
+- homepage composition and public messaging;
+- commercialization/content strategy;
+- responsive layout behavior;
+- SEO files and metadata;
+- robots and sitemap source;
+- web manifest;
+- ChatGPT Sites-origin metadata and provenance;
+- frontend source validation scripts.
+
+## What no longer belongs here as production authority
+
+This repository must not define a competing `qrv.network` runtime.
+
+The following production responsibilities belong to `ohi-stack/qrv-node`:
+
+- Express application runtime;
+- customer-facing production frontend after consolidation;
+- public verification presentation;
+- issuer UI/workflows;
+- registry/explorer UI;
+- sessions and issuer access controls;
+- API compatibility proxy;
+- QR generation;
+- health/readiness/version endpoints;
+- legacy-host redirects;
+- Hostinger deployment contract;
+- live acceptance tests.
+
+The following trusted responsibilities belong exclusively to `ohi-stack/qrv-api`:
+
+- canonical database access;
+- registry writes;
+- issuance mutations;
+- revocation mutations;
+- issuer authorization;
+- cryptographic signing/validation;
+- audit persistence;
+- webhook secrets;
+- privileged API keys;
+- database and signing secrets.
 
 ## Runtime guard
 
-`npm start` is intentionally blocked by default so this repository cannot accidentally become a second `qrv.network` production origin.
+This repository must not be deployed as the production `qrv.network` origin.
 
-For source preview use:
+For source preview:
 
 ```bash
 npm run dev
 ```
 
-For an explicit non-production preview through the start wrapper:
+For validation:
+
+```bash
+npm install
+npm run check
+npm run build
+```
+
+If an explicit non-production start wrapper is used:
 
 ```bash
 QRV_ALLOW_SOURCE_PREVIEW=1 npm start
 ```
 
-Do not set `QRV_ALLOW_SOURCE_PREVIEW=1` on the production `qrv.network` Hostinger application.
+Never set `QRV_ALLOW_SOURCE_PREVIEW=1` on the production QR-V Hostinger application.
 
 ## Canonical public routes
 
@@ -72,7 +129,7 @@ https://qrv.network/verify/{QRVID}
 
 ## Legacy hostname policy
 
-The historical service hostnames are compatibility aliases only:
+Historical service hostnames are compatibility aliases only:
 
 ```text
 verify.qrv.network      → qrv.network/verify
@@ -85,53 +142,26 @@ status.qrv.network      → qrv.network/status
 store.qrv.network       → qrv.network/store
 ```
 
-They should not be referenced as canonical destinations by new content, QR codes, environment defaults, sitemaps, or customer-facing links.
+They must not be used as canonical destinations by new QR codes, environment defaults, sitemaps, or customer-facing links.
 
-## Repository responsibilities
+## Migration Definition of Done
 
-This repo owns source material for:
-
-- homepage and public landing pages;
-- header, mega menu, mobile navigation, and footer;
-- QR-V brand assets and logo variants;
-- page layouts and public content;
-- pricing and commercial copy;
-- public documentation presentation;
-- SEO metadata, sitemap, robots, and web manifest;
-- responsive/mobile presentation;
-- ChatGPT Sites-exported components and assets.
-
-It does **not** own:
-
-- production database credentials;
-- registry writes;
-- issuer authorization;
-- revocation mutations;
-- signing private keys;
-- unrestricted QR-V API keys;
-- webhook secrets;
-- payment-provider secrets.
-
-Those belong behind `api.qrv.network` / `ohi-stack/qrv-api`.
-
-## Sites import area
-
-Files originating from the QR-V ChatGPT Sites project are tracked under:
+Do not archive or delete this repository until all of the following are true:
 
 ```text
-sites/qrv-global-verification/
+[ ] React/Vite customer frontend is present in qrv-node
+[ ] visual parity is approved
+[ ] mobile/responsive parity is approved
+[ ] customer-facing routes render from qrv-node
+[ ] SEO metadata is migrated
+[ ] robots/sitemap/manifest behavior is migrated or superseded intentionally
+[ ] commercialization and content strategy are preserved in qrv-node
+[ ] Sites provenance is preserved
+[ ] qrv-node npm run build passes
+[ ] qrv-node npm run check passes
+[ ] operational verifier/issuer/registry routes remain server-controlled
+[ ] issue → QR → VERIFIED → revoke → REVOKED passes
+[ ] live acceptance passes after Hostinger deployment
 ```
 
-See `sites/qrv-global-verification/README.md` and `sites/qrv-global-verification/site.manifest.json` for the import contract.
-
-## Local source validation
-
-```bash
-npm install
-npm run check
-npm run build
-```
-
-Node.js 20+ is required.
-
-Do not deploy this repository to `qrv.network` unless the production ownership decision is intentionally changed and `qrv-infra` is updated first.
+Until that gate is satisfied, this repository remains a protected migration source and historical reference.
