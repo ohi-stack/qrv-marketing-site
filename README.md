@@ -13,7 +13,7 @@ api.qrv.network   → ohi-stack/qrv-api
 
 ## Convergence status — September 6, 2026
 
-The customer-facing React/Vite frontend has now been converged into `ohi-stack/qrv-node` and activated from the canonical platform runtime.
+The customer-facing React/Vite frontend has been converged into `ohi-stack/qrv-node` and activated from the canonical platform runtime.
 
 Canonical production activation commit:
 
@@ -21,7 +21,7 @@ Canonical production activation commit:
 ed8831a4a45c061a69400fe5aad75557b9cb9e4b
 ```
 
-The activation PR passed both QR-V Platform Production CI and Production Readiness before merge.
+Additional September 6 consolidation commits in `qrv-node/main` preserved the commercialization baseline, content strategy, SEO assets, web manifest, and Sites provenance.
 
 The resulting production model is:
 
@@ -133,19 +133,18 @@ They must not be used as canonical destinations by new QR codes, environment def
 
 ## Remaining retirement gate
 
-The frontend/runtime migration is complete, but this repository should remain available until the remaining migration evidence is documented:
+The source migration is now materially complete, but this repository should remain available until deployment and live acceptance evidence are complete:
 
 ```text
 [x] React/Vite customer frontend present in qrv-node
 [x] customer frontend activated from qrv-node
-[x] qrv-node production CI passed
-[x] qrv-node production readiness passed
+[x] qrv-node production CI passed for frontend activation
+[x] qrv-node production readiness passed for frontend activation
 [x] operational verifier/issuer/registry routes remain server-controlled
+[x] commercialization/content strategy preserved in qrv-node
+[x] robots/sitemap/manifest migrated to qrv-node
+[x] Sites provenance preserved in qrv-node
 [ ] final visual/mobile parity review
-[ ] SEO metadata parity confirmed
-[ ] robots/sitemap/manifest parity confirmed
-[ ] commercialization/content strategy preservation confirmed
-[ ] Sites provenance preservation confirmed
 [ ] Hostinger deployment points qrv.network to qrv-node/main
 [ ] live issue → QR → VERIFIED → revoke → REVOKED acceptance passes
 ```
