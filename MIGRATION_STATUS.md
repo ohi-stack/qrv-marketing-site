@@ -1,70 +1,75 @@
 # QR-V™ Marketing → qrv-node Migration Status
 
-**Status date:** September 6, 2026
+**Status date:** September 6, 2026  
+**State:** FRONTEND/RUNTIME MIGRATION COMPLETE; SOURCE REFERENCE RETAINED
 
-`qrv-marketing-site` remains the canonical source for QR-V public design, customer-facing content, SEO assets, and ChatGPT Sites provenance while its production-facing frontend is being consolidated into `ohi-stack/qrv-node`.
+`qrv-marketing-site` is no longer the production frontend target for QR-V. The customer-facing React/Vite frontend and QR-V Sites visual system have been consolidated into `ohi-stack/qrv-node`, and the compiled frontend is now activated by the canonical platform runtime.
 
-## Current convergence state
-
-A dedicated `qrv-node` convergence branch now contains the imported customer-facing frontend and Sites visual system:
+## Canonical production state
 
 ```text
 Repository: ohi-stack/qrv-node
-Branch: feat/sites-frontend-convergence
-PR: #17 — Bring Sites visual system and customer frontend into qrv-node
+Branch: main
+Public origin: https://qrv.network
+Trusted API: https://api.qrv.network/api/v1
+Activation commit: ed8831a4a45c061a69400fe5aad75557b9cb9e4b
 ```
 
-Imported production-source areas include:
+The runtime model is now:
 
 ```text
-src/web/App.jsx
-src/web/main.jsx
-src/web/config.js
-src/web/styles.css
-src/web/index.html
-vite.config.js
-scripts/check-web.mjs
-docs/SITES_FRONTEND_CONVERGENCE.md
+qrv.network
+  React/Vite customer frontend
+  + Express production/server boundary
+        │
+        ▼
+api.qrv.network/api/v1
+  verification / registry / mutation authority
 ```
 
-The imported frontend uses the canonical production topology:
+## Completed migration areas
 
 ```text
-qrv.network                  public platform / UI
-api.qrv.network/api/v1       trusted API / data authority
+[x] React/Vite customer frontend present in qrv-node
+[x] QR-V Sites visual system present in qrv-node
+[x] canonical qrv.network route configuration
+[x] Vite production build contract
+[x] customer frontend runtime activation
+[x] production CI passed for activation change
+[x] production readiness passed for activation change
+[x] verification routes remain backend/API authoritative
+[x] issuer routes remain server controlled
+[x] /healthz /readyz /version remain operational controls
+[x] legacy-host compatibility behavior preserved
 ```
 
-New public links must use root-platform routes such as `/verify`, `/issuer`, `/registry`, `/docs`, `/developers`, `/pricing`, and `/status`. New QR-V codes must resolve to `https://qrv.network/verify/{QRVID}`.
+## Source repository role
 
-## Important production rule
+`qrv-marketing-site` remains protected as the historical/reference source for:
 
-Do not retire, archive, or delete this repository yet.
+- original Sites/React customer frontend;
+- design-system source;
+- commercialization/content strategy;
+- SEO source assets;
+- robots/sitemap/manifest source;
+- responsive-layout reference;
+- Sites manifests and provenance;
+- source-validation tooling.
 
-The migration is not complete until all unique marketing assets have been classified, preserved, and validated in `qrv-node`, including:
+It must not be deployed as a competing `qrv.network` runtime.
 
-- visual frontend and responsive behavior;
-- SEO assets (`robots.txt`, sitemap, manifest);
-- commercialization/content strategy documents;
-- Sites provenance and manifests;
-- source verification tooling;
-- customer-facing page content.
+## Remaining retirement gate
 
-## Runtime activation gate
-
-The React/Vite frontend is intentionally being imported before replacing the existing Express production presentation layer. `qrv-node` remains responsible for sessions, issuer workflows, verification fail-closed behavior, API communication, health/readiness, legacy redirects, and security controls.
-
-Before production activation:
+The code/runtime migration is complete. Final archival/read-only status should wait until the following evidence is recorded:
 
 ```text
-[ ] qrv-node frontend build passes
-[ ] existing qrv-node server validation passes
-[ ] dynamic verification routes remain server-controlled
-[ ] issuer/authenticated routes remain server-controlled
-[ ] /healthz /readyz /version remain server-controlled
-[ ] SEO/public assets are consolidated
-[ ] visual parity is reviewed
-[ ] live acceptance passes
-[ ] Hostinger build/deploy is validated
+[ ] final visual/mobile parity review
+[ ] SEO metadata parity confirmed
+[ ] robots/sitemap/manifest parity confirmed
+[ ] commercialization/content strategy preserved
+[ ] Sites provenance preserved
+[ ] Hostinger qrv.network deployment mapped to qrv-node/main
+[ ] live issue → QR → VERIFIED → revoke → REVOKED acceptance passes
 ```
 
-Only after this gate should `qrv-marketing-site` move from migration source to archive/source-history status.
+Until that final operational gate passes, retain this repository as a source/history reference rather than deleting it.
