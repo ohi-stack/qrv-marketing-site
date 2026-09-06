@@ -2,17 +2,19 @@
   "site": "qrv-global-verification",
   "network": "QR-V Global Verification Network",
   "publicDomain": "https://qrv.network",
-  "destinationRepository": "ohi-stack/qrv-marketing-site",
+  "canonicalRepository": "ohi-stack/qrv-node",
+  "migrationSourceRepository": "ohi-stack/qrv-marketing-site",
   "sourceType": "ChatGPT Sites",
-  "syncPolicy": "site-source-to-github",
+  "syncPolicy": "source-history-to-canonical-qrv-node",
   "siteSourceRoot": "sites/qrv-global-verification",
+  "canonicalFrontendSourceRoot": "ohi-stack/qrv-node/src/web",
   "canonicalPublicRoutes": [
     "/",
     "/protocol",
     "/how-it-works",
-    "/verification",
+    "/verify",
     "/registry",
-    "/issuers",
+    "/issuer",
     "/use-cases",
     "/pricing",
     "/developers",
@@ -20,32 +22,28 @@
     "/status",
     "/store",
     "/network",
-    "/about",
-    "/support"
+    "/about"
   ],
   "requiredSiteElements": [
     "responsive header",
-    "mega menu",
+    "mega-menu-ready information architecture",
     "mobile navigation",
-    "light and dark logo variants",
-    "hero animation",
+    "verification-focused hero",
     "QR-V network visual representation",
     "verification CTA",
     "issuer CTA",
-    "four-column footer",
     "responsive page sections"
   ],
   "runtimeBoundaries": {
-    "publicSiteSource": "ohi-stack/qrv-marketing-site",
-    "platformRuntime": "ohi-stack/qrv-node",
-    "apiAndRegistry": "ohi-stack/qrv-api"
+    "publicPlatformSourceAndRuntime": "ohi-stack/qrv-node",
+    "apiAndRegistryAuthority": "ohi-stack/qrv-api"
   },
   "rules": [
-    "Do not maintain a second independent copy of the QR-V public website in another repository.",
-    "When Sites source is exported, preserve the exported file names and asset paths where practical.",
-    "Mobile and desktop must render from the same source revision.",
+    "Do not deploy qrv-marketing-site as the production qrv.network origin.",
+    "Preserve this repository as migration/source history until retirement evidence is complete.",
+    "Mobile and desktop must render from the same canonical qrv-node source revision.",
     "Protected API credentials and registry secrets must never be committed with site files.",
     "Public verification behavior remains deterministic under QRVP-1 and QVS-1.0."
   ],
-  "lastUpdated": "2026-08-15T14:48:00Z"
+  "lastUpdated": "2026-09-06T15:12:00Z"
 }
