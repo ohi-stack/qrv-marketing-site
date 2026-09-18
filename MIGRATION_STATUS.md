@@ -1,82 +1,85 @@
 # QR-V™ Marketing → qrv-node Migration Status
 
 **Status date:** September 17, 2026  
-**State:** FRONTEND/RUNTIME CONVERGENCE MERGED; SOURCE REFERENCE RETAINED
+**State:** FRONTEND/RUNTIME CONVERGENCE COMPLETE; SOURCE REFERENCE RETAINED
 
-`qrv-marketing-site` is not the production runtime for QR-V. The customer-facing React/Vite Sites frontend is consolidated into `ohi-stack/qrv-node`, and the canonical Express runtime now serves the compiled frontend while retaining protected operational routes.
+`qrv-marketing-site` is not the production runtime and is no longer an active development lane for QR-V. The customer-facing React/Vite Sites frontend is consolidated into `ohi-stack/qrv-node`.
 
-## Canonical production state
+Canonical production/runtime state:
 
 ```text
 Repository: ohi-stack/qrv-node
-Branch: main
+Production branch: main
 Public origin: https://qrv.network
 Trusted API: https://api.qrv.network/api/v1
-Runtime convergence merge: eaac061efd4c03d8d90714409414832682e3fec0
+Runtime convergence: eaac061efd4c03d8d90714409414832682e3fec0
+Multi-builder baseline: 4e9dd06e7c164b61ec586c54f2c3578192ef5bb3
 ```
 
-The runtime model is:
+## Active frontend development path
+
+Future ChatGPT Sites/customer-interface work belongs in:
 
 ```text
-qrv.network
-  compiled React/Vite Sites frontend
-  + Express production/server boundary
-        │
-        ▼
-api.qrv.network/api/v1
-  verification / registry / mutation authority
+ohi-stack/qrv-node
+branch: work/chatgpt-sites
 ```
 
-## Completed migration areas
+Google AI Studio work belongs in:
 
 ```text
-[x] React/Vite customer frontend present in qrv-node
-[x] QR-V Sites visual system present in qrv-node
-[x] canonical qrv.network route configuration
-[x] Vite production build contract
-[x] compiled frontend served by qrv-node
-[x] SPA fallback for ordinary public routes
-[x] /verify/* excluded from SPA fallback
-[x] /issuer/* excluded from SPA fallback
-[x] /registry/* excluded from SPA fallback
-[x] /api/* excluded from SPA fallback
-[x] /healthz /readyz /version remain operational controls
-[x] direct QRVID compatibility redirects preserved
-[x] legacy-host redirects execute before SPA/static handling
-[x] production CI passed on the exact merge candidate
-[x] production readiness passed on the exact merge candidate
+ohi-stack/qrv-node
+branch: work/google-ai-studio
 ```
+
+Cross-builder integration belongs in:
+
+```text
+ohi-stack/qrv-node
+branch: integration/multi-builder
+```
+
+`main` remains production-only.
 
 ## Source repository role
 
-`qrv-marketing-site` remains protected as the historical/reference source for:
+This repository is retained only as historical/reference source for:
 
 - original Sites/React customer frontend;
-- design-system source;
+- prior design-system source;
 - commercialization/content strategy;
 - SEO source assets;
 - robots/sitemap/manifest source;
 - responsive-layout reference;
 - Sites manifests and provenance;
-- source-validation tooling.
+- source-validation history.
 
-It must not be deployed as a competing `qrv.network` runtime.
+Do not connect this repository to `qrv.network` as a competing deployment.
 
-## Remaining retirement / live-production gate
-
-The code/runtime migration is complete. Final archival/read-only status should wait until the following evidence is recorded:
+## Migration completion
 
 ```text
-[ ] Hostinger qrv.network deployment is mapped to qrv-node/main at or after eaac061
-[ ] live homepage serves the compiled Sites frontend
-[ ] live /healthz /readyz /version behavior passes
-[ ] QRV-PROD-CERT-000001 verifies through api.qrv.network
-[ ] issuer login → issue → QR → VERIFIED → revoke → REVOKED passes live
+[x] frontend source consolidated into qrv-node
+[x] Sites visual system consolidated into qrv-node
+[x] compiled frontend served by qrv-node
+[x] protected Express route boundary preserved
+[x] production CI/readiness validated
+[x] ChatGPT Sites development branch created
+[x] Google AI Studio development branch created
+[x] integration branch created
+[x] all three lanes synchronized to the same baseline
+```
+
+## Remaining archival gate
+
+```text
+[ ] live Hostinger deployment points to qrv-node/main
+[ ] live homepage/frontend verified
+[ ] live verification lifecycle accepted
 [ ] final visual/mobile parity review
 [ ] SEO metadata parity confirmed
 [ ] robots/sitemap/manifest parity confirmed
-[ ] commercialization/content strategy preserved
 [ ] Sites provenance preserved
 ```
 
-Until that operational gate passes, retain this repository as a source/history reference rather than deleting it.
+Until those operational checks are recorded, retain this repository as read-only source/history reference.
