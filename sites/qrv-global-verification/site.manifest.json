@@ -43,11 +43,24 @@
     "Preserve this repository as migration/source history until retirement evidence is complete.",
     "Mobile and desktop must render from the same canonical qrv-node source revision.",
     "Protected API credentials and registry secrets must never be committed with site files.",
-    "Public verification behavior remains deterministic under QRVP-1 and QVS-1.0."
+    "Public verification behavior remains deterministic under QRVP-1 and QVS-1.0.",
+    "Sites folder has no complete exported page/component/asset bundle; preserve historical source and import verified assets only.",
+    "Never interpret a source manifest or proposed PR as proof of live cryptographic or connector operation."
   ],
-  "lastUpdated": "2026-09-19T00:00:00Z",
+  "lastUpdated": "2026-10-10",
   "siteSourceCommit": "b551e69d9a797d18376315a8353e7521c07b175f",
   "siteVersion": 12,
   "siteVersionId": "appgprj_6a6bc4a21f848191913b5d346d0ae466~appgver_e0e2264f7fe8819191d116965e67a985",
-  "syncStatus": "reference-synchronized"
+  "syncStatus": "content-proposed-pr-pending-ci-live-acceptance",
+  "contentRevision": "2026-10-10",
+  "sourceContentFiles": [
+    "sites/qrv-global-verification/content/unified-trust-2026-10-10.md"
+  ],
+  "trustPillars": [
+    "Unified cryptographic security",
+    "Selective privacy",
+    "Open standards",
+    "Seamless integration"
+  ],
+  "canonicalFrontendTrustSection": "ohi-stack/qrv-node/src/web/components/TrustArchitecture.jsx"
 }
