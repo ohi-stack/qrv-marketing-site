@@ -32,9 +32,9 @@ const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
 const errors = [];
 
 if (manifest.site !== 'qrv-global-verification') errors.push('Unexpected Sites project slug.');
-if (manifest.destinationRepository !== 'ohi-stack/qrv-marketing-site') errors.push('Destination repository must be ohi-stack/qrv-marketing-site.');
+if (manifest.migrationSourceRepository !== 'ohi-stack/qrv-marketing-site') errors.push('Migration source repository must be ohi-stack/qrv-marketing-site.');
 if (manifest.publicDomain !== 'https://qrv.network') errors.push('Public domain must be https://qrv.network.');
-if (manifest.runtimeBoundaries?.publicSiteSource !== 'ohi-stack/qrv-marketing-site') errors.push('Public site source boundary is not canonical.');
+if (manifest.canonicalRepository !== 'ohi-stack/qrv-node') errors.push('Public runtime must remain canonical qrv-node.');
 
 const mustHaveRoutes = ['/', '/verify', '/issuer', '/registry', '/developers', '/docs', '/pricing', '/status'];
 for (const route of mustHaveRoutes) {
@@ -49,7 +49,7 @@ if (errors.length) {
 console.log(JSON.stringify({
   ok: true,
   site: manifest.site,
-  destinationRepository: manifest.destinationRepository,
+  canonicalRepository: manifest.canonicalRepository,
   publicDomain: manifest.publicDomain,
   routeCount: manifest.canonicalPublicRoutes.length
 }, null, 2));

@@ -6,12 +6,13 @@
   "description": "Canonical public website source for the QR-V Global Verification Network, including synchronized ChatGPT Sites source from qrv-global-verification.",
   "scripts": {
     "dev": "node server.js",
-    "check": "node scripts/check.mjs && node scripts/verify-sites-source.mjs",
+    "check": "node scripts/check.mjs && node scripts/verify-sites-source.mjs && npm run check:current-site",
     "sites:check": "node scripts/verify-sites-source.mjs",
     "build": "node scripts/build.mjs",
     "start": "node scripts/source-only-start.mjs",
     "preview:start": "QRV_ALLOW_SOURCE_PREVIEW=1 node scripts/source-only-start.mjs",
-    "validate:prod": "npm run check && npm run build"
+    "validate:prod": "npm run check && npm run build",
+    "check:current-site": "node scripts/check-current-site.mjs"
   },
   "dependencies": {},
   "devDependencies": {},
