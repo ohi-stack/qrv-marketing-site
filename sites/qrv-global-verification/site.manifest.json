@@ -45,9 +45,12 @@
     "Protected API credentials and registry secrets must never be committed with site files.",
     "Public verification behavior remains deterministic under QRVP-1 and QVS-1.0."
   ],
-  "lastUpdated": "2026-09-19T00:00:00Z",
-  "siteSourceCommit": "b551e69d9a797d18376315a8353e7521c07b175f",
-  "siteVersion": 12,
-  "siteVersionId": "appgprj_6a6bc4a21f848191913b5d346d0ae466~appgver_e0e2264f7fe8819191d116965e67a985",
-  "syncStatus": "reference-synchronized"
+  "lastUpdated": "2026-11-14",
+  "currentSourceCommit": "c33a19764ce9ae663a5660f7c274aad80ae0ece0",
+  "currentSourceRoot": "sites/current-source",
+  "latestSavedSiteVersion": 14,
+  "sourceAheadOfSavedVersion": true,
+  "nodeIntegrationStatus": "public-frontend-integrated-protected-sites-runtime-preserved-for-review",
+  "savedSiteSourceCommit": "06da543017695394c460da060d28e18d8e6ad857",
+  "syncStatus": "prepared-for-review"
 }
